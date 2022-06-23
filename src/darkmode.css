@@ -1,0 +1,27 @@
+.dark-mode-elmnt{
+    background-color: hsl(209, 23%, 22%)
+  }
+  
+  .light-mode-elmnt{
+    background-color: hsl(0, 0%, 100%);
+  }
+  
+  .ligth-mode-input{
+    background-color: hsl(0, 0%, 52%);
+  }
+  
+  .dark-mode-bckg{
+    background-color: hsl(207, 26%, 17%);
+  }
+
+  .light-mode-bckg{
+    background-color: hsl(0, 0%, 98%);
+  }
+  
+  .dark-mode-text{
+    color: hsl(0, 0%, 100%);
+  }
+
+  .light-mode-text{
+    color: hsl(200, 15%, 8%);
+  }
