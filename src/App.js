@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Start from './Start';
 import Navbar from './Navbar';
 import FlagContainer from './FlagContainer';

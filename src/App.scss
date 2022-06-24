@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html, body, #root{
+  font-family: "proxima-nova-condensed", sans-serif;
+}
+
 .navbar-container{
   display: flex;
   justify-content: center;
@@ -33,4 +37,33 @@
   padding: .5rem 1rem;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.flag-game{
+  display: flex;
+  justify-content: space-around;
+}
+
+.game-container{
+  height: 91.2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img-container img{
+  height: 180px;
+  width: 300px;
+  object-fit: fill;
+  box-shadow: rgba(0, 0, 0, 20%) 1px 5px 25px -10px;
+}
+
+.info-container{
+  text-align: center;
+}
+.info-container h2{
+  font-size: 1.5em;
+}
+.info-container p{
+  font-size: 1.9em;
 }
