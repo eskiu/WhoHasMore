@@ -2,6 +2,7 @@ import './App.scss';
 import Start from './Start';
 import Navbar from './Navbar';
 import FlagContainer from './FlagContainer';
+import Test from "./Test"
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Start isDark={isDark} />} />
           <Route path="/game" element={<FlagContainer />} />
+          <Route path="/game/:region" element={<Test />} />
         </Routes>
       </BrowserRouter>
     </div>

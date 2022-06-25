@@ -9,6 +9,13 @@ function Start({ isDark }) {
                 <Link to={`/game`}>
                     <button className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-elmnt light-mode-text"}>Start</button>
                 </Link>
+                <Link to={`/game/americas`}>
+                    <button>Test</button>
+                </Link>
+                <Link to={`/game/europe`}>
+                    <button>Test</button>
+                </Link>
+
             </section>
         </>
     )
