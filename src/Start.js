@@ -6,16 +6,17 @@ function Start({ isDark }) {
         <>
             <section className='welcome-container'>
                 <h1>BIENVENIDO</h1>
-                <Link to={`/game`}>
-                    <button className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-elmnt light-mode-text"}>Start</button>
-                </Link>
-                <Link to={`/game/americas`}>
-                    <button>Test</button>
-                </Link>
-                <Link to={`/game/europe`}>
-                    <button>Test</button>
-                </Link>
-
+                <section className="selectRegion">
+                    <h3>Elija su región</h3>
+                    <div className="buttons">
+                        <Link to={`/game/americas`}>
+                            <button className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-elmnt light-mode-text"}>América</button>
+                        </Link>
+                        <Link to={`/game/europe`}>
+                            <button className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-elmnt light-mode-text"}>Europa</button>
+                        </Link>
+                    </div>
+                </section>
             </section>
         </>
     )
