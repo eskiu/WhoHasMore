@@ -29,7 +29,7 @@ html, body, #root{
 }
 
 .welcome-container{
-    height: 93.5vh;
+    height: 92.9vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,10 +62,10 @@ html, body, #root{
   }
   p{
     margin: 4rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     text-align: center;
     width: 800px;
-  }
+  }  
   button{
     padding: .5rem 1rem;
     border: 1px solid black;
@@ -73,87 +73,107 @@ html, body, #root{
   }
 }
 
+.game-flag-container{
+  height: 92.9vh;
+}
 .countries-container{
   display: flex;
   justify-content: space-around;
   text-align: center;
   .firstCountry, .secondCountry{
-      padding: 5.7rem 0;
+      padding: 4rem 0;
+      height: fit-content;
     .img-container img{
       height: 280px;
       width: 440px;
       object-fit: fill;
       box-shadow: rgba(0, 0, 0, 20%) 1px 5px 25px -10px;
-    }
+    }  
     .info-container{
       h2{
         font-size: 2rem;
         font-weight: bold;
-      }
+      }  
       p{
         font-size: 1.8rem;
         font-weight: 100;
-      }
-    }
-  }
-}
+      }  
+      .btn-container{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        align-items: center;
+        button:disabled{
+          background-color: gray;
+          cursor: not-allowed;
+        }
+        .btn1{
+          padding: .75rem 1rem;
 
-.gameContainer{
+          margin: 0.5rem 1rem;
+          border: none;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+        }  
+        .btn2{
+          padding: .75rem 1.6rem;
+          margin: 0.5rem 1rem;
+          border: none;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+        }  
+      }  
+    }  
+  }  
+}  
+
+.answer-container{
   text-align: center;
-  height: 35.4vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: flex-start; 
+  align-items: center;
   h1{
     font-size: 2rem;
     font-weight: 100;
-  }
-  button{
-    padding: .5rem 1rem;
-    border: 1px solid black;
-    cursor: pointer;
-    font-weight: bold;
-    width: fit-content;
-    font-size: 1rem;
-    margin: 1rem auto;
-  }
-  .btn-container{
-    display: flex;
-    flex-direction: column-reverse;
-    margin: 0 auto;
-    align-items: center;
-    .btn1{
-      padding: 0.5rem 1rem;
-      margin: 0.5rem 1rem;
-      border: 1px solid black;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    .btn2{
-      padding: 0.5rem 1.75rem;
-      margin: 0.5rem 1rem;
-      border: 1px solid black;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-  }
+  }   
   .wrong-answer{
-    p{
-      font-size: 1.5rem;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h1{
       font-weight: bold;
       color: rgb(245, 47, 47);
+    }  
+    p{
+      font-size: 1.5rem;
+      padding-bottom: 10px;
     }
-    a{
-      margin: 0.5rem;
-      padding: 0.2rem 1rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
+    .btns{
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      a{
+        margin-left: 0.5rem;
+        padding: .5rem 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      button{
+        padding: .75rem 1rem;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        width: fit-content;
+        font-size: 1.1rem;
+      } 
     }
   }
   .correct-answer{
@@ -162,39 +182,26 @@ html, body, #root{
       font-size: 1.5rem;
       font-weight: bold;
     }
-  }
+    button{
+      padding: .75rem 1rem;
+      margin-top: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      width: fit-content;
+      font-size: 1.1rem;
+    } 
+  }  
 }
 
-.flag-game-container{
-  .flag-game{
-      display: flex;
-      justify-content: space-around;
-  }
-  height: 93.5vh;
-  text-align: center;
-}
-
-.game-container{
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  .img-container img{
-    height: 180px;
-    width: 300px;
-    object-fit: fill;
-    box-shadow: rgba(0, 0, 0, 20%) 1px 5px 25px -10px;
-  }
-  .info-container{
-    text-align: center;
-    h2{
-      font-size: 1.5em;
-    }
-    p{
-      font-size: 1.9em;
-    }
-  }
+.footer{
+  position: fixed;
+  bottom: 1px;
+  padding: 0 1.5rem 1rem;
+  font-size: 1.2em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .containerSpinner{

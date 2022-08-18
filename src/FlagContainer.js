@@ -11,6 +11,7 @@ function FlagContainer({ isDark }) {
     const [isCorrect, setIsCorrect] = useState(false)
     const [isWrong, setIsWrong] = useState(false)
     const [counter, setCounter] = useState(0)
+    const [maxCounter, setMaxCounter] = useState(0)
 
     const { country } = useContext(context)
     const copyCountry = [...country]
@@ -49,55 +50,69 @@ function FlagContainer({ isDark }) {
     }
 
     const isHigher = (value) => {
-        if (twoCountry[0]?.population > value) {
-            setIsCorrect(true)
-            setCounter(counter + 1)
-        } else {
-            setIsWrong(true)
-        }
-    }
-
-    const isLower = (value) => {
         if (twoCountry[0]?.population < value) {
             setIsCorrect(true)
             setCounter(counter + 1)
         } else {
             setIsWrong(true)
+            isHighScore()
         }
     }
 
+    const isLower = (value) => {
+        if (twoCountry[0]?.population > value) {
+            setIsCorrect(true)
+            setCounter(counter + 1)
+        } else {
+            setIsWrong(true)
+            isHighScore()
+        }
+    }
+
+    const isHighScore = () => {
+        if (counter > maxCounter) {
+            localStorage.setItem('maxCounter', counter)
+            setMaxCounter(counter)
+        }
+    }
 
     return (
         twoCountry.length === 0 ? <Spinner isDark={isDark} /> : <>
-            <section className="countries-container">
-                <div className="firstCountry">
-                    <div className="img-container">
-                        <img src={twoCountry[0]?.flags.png} alt={twoCountry[0]?.translations.es} />
+            <div className="game-flag-container">
+                <section className="countries-container">
+                    <div className="firstCountry">
+                        <div className="img-container">
+                            <img src={twoCountry[0]?.flags.png} alt={twoCountry[0]?.translations.es} />
+                        </div>
+                        <div className="info-container">
+                            <h2>{twoCountry[0]?.translations.es}</h2>
+                            <p>Poblacion: {formatNumber(twoCountry[0]?.population)}</p>
+                        </div>
                     </div>
-                    <div className="info-container">
-                        <h2>{twoCountry[0]?.translations.es}</h2>
-                        <p>Poblacion: {formatNumber(twoCountry[0]?.population)}</p>
+                    <div className="secondCountry">
+                        <div className="img-container">
+                            <img src={twoCountry[1]?.flags.png} alt={twoCountry[1]?.translations.es} />
+                        </div>
+                        <div className="info-container">
+                            <h2>{twoCountry[1]?.translations.es}</h2>
+                            {isCorrect ? <p>Poblacion: {formatNumber(twoCountry[1]?.population)}</p> : <div className="btn-container">
+                                <span>tiene</span>
+                                <button className={isDark ? "dark-mode-text dark-mode-elmnt btn2" : "light-mode-text light-mode-elmnt btn2"} onClick={() => { isHigher(twoCountry[1]?.population) }} disabled={isCorrect || isWrong} >Más población</button>
+                                <button className={isDark ? "dark-mode-text dark-mode-elmnt btn1" : "light-mode-text light-mode-elmnt btn1"} onClick={() => { isLower(twoCountry[1]?.population) }} disabled={isCorrect || isWrong}>Menos población</button>
+                                <span>que {twoCountry[0]?.translations.es}</span>
+                            </div>}
+                        </div>
                     </div>
-                </div>
-                <div className="secondCountry">
-                    <div className="img-container">
-                        <img src={twoCountry[1]?.flags.png} alt={twoCountry[1]?.translations.es} />
-                    </div>
-                    <div className="info-container">
-                        <h2>{twoCountry[1]?.translations.es}</h2>
-                        <p>Poblacion: {isCorrect ? formatNumber(twoCountry[1]?.population) : "????"}</p>
-                    </div>
-                </div>
-            </section>
-            <section className='gameContainer'>
-                <h1>¿<strong>{twoCountry[0]?.translations.es}</strong> tiene más o menos poblacion que <strong>{twoCountry[1]?.translations.es}</strong>?</h1>
-                <div className="btn-container">
-                    <button className="btn1" onClick={() => { isLower(twoCountry[1]?.population) }} disabled={isCorrect || isWrong}>MENOS POBLACIÓN</button>
-                    <button className="btn2" onClick={() => { isHigher(twoCountry[1]?.population) }} disabled={isCorrect || isWrong}>MÁS POBLACIÓN</button>
-                </div>
-                {isCorrect ? <div className='correct-answer'> <p>¡CORRECTO!</p> <button onClick={() => deleteFirstElement()}>SIGUIENTE</button></div> : ''}
-                {isWrong ? <div className='wrong-answer'><h1>¡BUEN INTENTO!</h1><p>{twoCountry[1]?.translations.es} tiene {formatNumber(twoCountry[1]?.population)} habitantes.<br /> Tu puntuación fue de: {counter}</p><button onClick={() => newGame()}>Reintentar</button><Link to={`/`} className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-text light-mode-elmnt"}>Cambiar de región</Link></div> : ""}
-            </section>
+                </section>
+                <section className='answer-container'>
+                    {isCorrect ? <div className='correct-answer'> <p>¡CORRECTO!</p> <button onClick={() => deleteFirstElement()} className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-elmnt light-mode-text"}>Siguiente</button></div> : ''}
+                    {isWrong ? <div className='wrong-answer'><div className="wrong-answer-txt"><h1>¡BUEN INTENTO!</h1><p>{twoCountry[1]?.translations.es} tiene {formatNumber(twoCountry[1]?.population)} habitantes.<br /> Tu puntuación fue de: {counter}</p></div><div className="btns"><button onClick={() => newGame()} className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-elmnt light-mode-text"}>Reintentar</button><Link to={`/`} className={isDark ? "dark-mode-text dark-mode-elmnt" : "light-mode-text light-mode-elmnt"}>Cambiar de región</Link></div></div> : ""}
+                </section>
+                <section className="footer">
+                    <p>Puntuación: {counter}</p>
+                    <p>Puntuación máxima: {JSON.parse(localStorage?.getItem('maxCounter'))}</p>
+                </section>
+            </div>
         </>
     )
 }

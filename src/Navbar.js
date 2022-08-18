@@ -11,6 +11,7 @@ function Navbar({ isDark, handleDarkMode }) {
         <>
             <nav className='navbar-container'>
                 <Link to={`/`} className={isDark ? "dark-mode-text" : "light-mode-text"}><FontAwesomeIcon icon={faHomeLg} /></Link>
+                <h1>WHO HAS MORE</h1>
                 <div className="icon">
                     {isDark ? <FontAwesomeIcon icon={faSun} onClick={handleDarkMode} /> : <FontAwesomeIcon icon={faMoon} onClick={handleDarkMode} />}
                 </div>

@@ -12,7 +12,7 @@ function Start({ isDark }) {
             <section className='welcome-container'>
                 <h1>BIENVENIDO</h1>
                 <p>El juego consiste en elegir, entre dos países o islas, cuál tiene más población. <br /> Se podrá seleccionar diferentes regiones del mundo o todo el mundo tal cual
-                    se muestra a continuación. <br />Tenga en cuenta que el juego se reinicia cada vez que se cambia de región, no así su máxima puntuación. <br />¡Buena suerte!
+                    se muestra a continuación. <br />Tenga en cuenta que el juego se reinicia cada vez que se cambia de región, no así tú máxima puntuación. <br />¡Buena suerte!
                 </p>
                 <section className="selectRegion">
                     <h3>Elija su región</h3>
