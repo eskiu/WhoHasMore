@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import FlagContainer from './FlagContainer';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import FunctionProvider from './context/FunctionContext'
 
 function App() {
 
@@ -13,13 +14,15 @@ function App() {
 
   return (
     <div className={isDark ? "dark-mode-bckg dark-mode-text" : "light-mode-bckg light-mode-text"}>
-      <BrowserRouter>
-        <Navbar isDark={isDark} handleDarkMode={handleDarkMode} />
-        <Routes>
-          <Route path="/" element={<Start isDark={isDark} />} />
-          <Route path="/game/:region" element={<FlagContainer />} />
-        </Routes>
-      </BrowserRouter>
+      <FunctionProvider>
+        <BrowserRouter>
+          <Navbar isDark={isDark} handleDarkMode={handleDarkMode} />
+          <Routes>
+            <Route path="/" element={<Start isDark={isDark} />} />
+            <Route path="/game/:region" element={<FlagContainer isDark={isDark} />} />
+          </Routes>
+        </BrowserRouter>
+      </FunctionProvider>
     </div>
   );
 }
