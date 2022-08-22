@@ -48,7 +48,7 @@ html, body, #root{
       a{
         margin: 0.5rem;
         padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
+        border-radius: 0.4rem;
         font-size: 1.7rem;
         font-weight: bold;
         text-decoration: none;
@@ -109,9 +109,8 @@ html, body, #root{
         }
         .btn1{
           padding: .75rem 1rem;
-
           margin: 0.5rem 1rem;
-          border: none;
+          border-radius: 0.3rem;
           font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
@@ -119,7 +118,7 @@ html, body, #root{
         .btn2{
           padding: .75rem 1.6rem;
           margin: 0.5rem 1rem;
-          border: none;
+          border-radius: 0.3rem;
           font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
@@ -165,14 +164,15 @@ html, body, #root{
         font-weight: bold;
         text-decoration: none;
         cursor: pointer;
+        border-radius: 0.3rem;
       }
       button{
         padding: .75rem 1rem;
-        border: none;
         cursor: pointer;
         font-weight: bold;
         width: fit-content;
         font-size: 1.1rem;
+        border-radius: 0.3rem;
       } 
     }
   }
@@ -185,7 +185,7 @@ html, body, #root{
     button{
       padding: .75rem 1rem;
       margin-top: 10px;
-      border: none;
+      border-radius: 0.3rem;
       cursor: pointer;
       font-weight: bold;
       width: fit-content;
@@ -272,4 +272,142 @@ html, body, #root{
       } 
     }
 }
+}
+
+@media (max-width: 425px){
+  .welcome-container{
+    height: 100%;
+    h1, p{
+      width: 95%;
+      margin: 0;
+    }
+    h1{
+      font-size: 1.5rem;
+      margin-top: 30px;
+      text-align: center;
+    }
+    p{
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 30px 0;
+    }
+    .selectRegion{
+      .buttons{
+        flex-direction: column;
+        margin: 30px 0;
+        a{
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .game-flag-container{
+    height: 100%;
+    .countries-container{
+      flex-direction: column;
+      width: 100%;
+      .firstCountry, .secondCountry{
+        padding: 30px 0;
+        .img-container{
+          img{
+          width: 90%;
+          height: 100%;
+          }
+        }
+      }
+    }
+    .answer-container{
+      .correct-answer{
+        padding-bottom: 30px;
+      }
+      .wrong-answer{
+        width: 97%;
+        padding-bottom: 30px;
+      }
+    }
+  .footer{
+    position: static;
+    width: 100%; 
+    display: flex; 
+    flex-wrap: wrap; 
+    align-self: flex-end;
+    padding-top: 10px;
+  }
+  }
+}
+
+@media (min-width:425px) and (max-width: 817px){
+  .welcome-container{
+    height: 100%;
+    padding: 5.5rem 0;
+    h1, p{
+      width: 70%;
+      margin: 0;
+    }
+    h1{
+      font-size: 1.5rem;
+      margin-top: 30px;
+      text-align: center;
+    }
+    p{
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 30px 0;
+    }
+    .selectRegion{
+      .buttons{
+        margin: 30px 0;
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        a{
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .game-flag-container{
+    height: 100%;
+    .countries-container{
+      width: 100%;
+      flex-direction: column;
+      .firstCountry, .secondCountry{
+        padding: 30px 0;
+        .img-container{
+          img{
+          width: 50%;
+          height: 100%;
+          }
+        }
+      }
+    }
+    .answer-container{
+      .correct-answer{
+        padding-bottom: 50px;
+      }
+      .wrong-answer{
+        width: 97%;
+        padding-bottom: 30px;
+      }
+    }
+  .footer{
+    position: inherit;
+    width: 100%; 
+    display: flex; 
+    align-self: flex-end;
+    padding-top: 10px;
+  }
+  }
+}
+
+@media (width:1024px){
+  .game-flag-container{
+    .firstCountry, .secondCountry{
+      padding: 0;
+      padding-top: 74px;
+    }
+  }
 }
