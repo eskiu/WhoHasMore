@@ -16,7 +16,6 @@ function FunctionContext({ children }) {
                 return setCountry(respuesta)
             })
     }
-
     useEffect(() => callAPI(), [])
 
 
