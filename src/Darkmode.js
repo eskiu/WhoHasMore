@@ -6,7 +6,7 @@ import Sun from "./assets/Sun";
 
 function Darkmode() {
 
-    const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === "dark" ? true : false);
+    const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === null ? true : localStorage.getItem("theme") === "dark" ? true : false);
 
     const body = document.body;
     const lightTheme = "light";
@@ -23,7 +23,7 @@ function Darkmode() {
         body.classList.add(darkTheme);
     }
 
-    const switchTheme = (e) => {
+    const switchTheme = () => {
         if (theme === lightTheme) {
             body.classList.replace(lightTheme, darkTheme);
             localStorage.setItem("theme", "dark");
@@ -38,7 +38,7 @@ function Darkmode() {
     }
 
     return (
-        <div className="darkMode-toggle" onClick={(e) => switchTheme(e)}>
+        <div className="darkMode-toggle" onClick={() => switchTheme()}>
             {darkMode ? <Sun /> : <Moon />}
         </div>
     )
