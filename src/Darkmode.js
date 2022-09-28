@@ -20,19 +20,19 @@ function Darkmode() {
     if (theme === lightTheme || theme === darkTheme) {
         body.classList.add(theme);
     } else {
-        body.classList.add(lightTheme);
+        body.classList.add(darkTheme);
     }
 
     const switchTheme = (e) => {
         if (theme === lightTheme) {
             body.classList.replace(lightTheme, darkTheme);
-            e.target.checked = true;
             localStorage.setItem("theme", "dark");
+            theme = darkTheme;
             setDarkMode(true);
         } else {
             body.classList.replace(darkTheme, lightTheme);
-            e.target.checked = false;
             localStorage.setItem("theme", "light");
+            theme = lightTheme;
             setDarkMode(false);
         }
     }
