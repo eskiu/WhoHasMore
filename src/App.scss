@@ -1,4 +1,35 @@
-@import 'darkmode.css';
+:root {
+  --darkmode-background: #202c37;
+  --darkmode-text: #ffffff;
+  --darkmode-element: #2b3945;
+  --darkmode-border: 1px solid #ffffff;
+  --darkmode-spinner: #ffffff;
+  
+  --lightmode-background: #f5f5f5;
+  --lightmode-text: #111517;
+  --lightmode-element: #ffffff;
+  --lightmode-input: 	#858585;
+  --lightmode-border: 1px solid #111517;
+  --lightmode-spinner: #2b3945;
+
+}
+
+body.light{
+  --background-color: var(--lightmode-background);
+  --background-elmnt: var(--lightmode-element);
+  --color: var(--lightmode-text);
+  --background-input: var(--lightmode-input);
+  --border: var(--lightmode-border);
+  --background-spinner: var(--lightmode-spinner);
+}
+
+body.dark{
+  --background-color: var(--darkmode-background);
+  --background-elmnt: var(--darkmode-element);
+  --color: var(--darkmode-text);
+  --border: var(--darkmode-border);
+  --background-spinner: var(--darkmode-spinner);
+}
 
 *{
     margin: 0;
@@ -8,6 +39,10 @@
 
 html, body, #root{
     font-family: "proxima-nova-condensed", sans-serif;
+}
+
+body{
+  background: var(--background-color);
 }
 
 .navbar-container{
@@ -21,10 +56,27 @@ html, body, #root{
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
+      color: var(--color);
+      svg{
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        fill: var(--color)
+      }
+    }
+    h1{
+      color: var(--color);
     }
   .icon{
     cursor: pointer;
-    font-size: 1.3rem;
+    .darkMode-toggle{
+      svg{
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        fill: var(--color)
+      }
+    }
   }
 }
 
@@ -42,6 +94,7 @@ html, body, #root{
     h3{
       font-weight: 100;
       font-size: 2rem;
+      color: var(--color);
     }
     .buttons{
       display: flex;
@@ -53,29 +106,26 @@ html, body, #root{
         font-weight: bold;
         text-decoration: none;
         cursor: pointer;
+        color: var(--color);
+        background-color: var(--background-elmnt);
+        border: var(--border);
       }
     }
   }
   h1{
     margin: 1rem;
     font-size: 4rem;
+    color: var(--color);
   }
   p{
     margin: 4rem;
     font-size: 1.7rem;
     text-align: center;
     width: 800px;
-  }  
-  button{
-    padding: .5rem 1rem;
-    border: 1px solid black;
-    cursor: pointer;
+    color: var(--color);
   }
 }
 
-.game-flag-container{
-  height: 92.9vh;
-}
 .countries-container{
   display: flex;
   justify-content: space-around;
@@ -93,10 +143,12 @@ html, body, #root{
       h2{
         font-size: 2rem;
         font-weight: bold;
+        color: var(--color);
       }  
       p{
         font-size: 1.8rem;
         font-weight: 100;
+        color: var(--color);
       }  
       .btn-container{
         display: flex;
@@ -107,6 +159,9 @@ html, body, #root{
           background-color: gray;
           cursor: not-allowed;
         }
+        span{
+          color: var(--color);
+        }
         .btn1{
           padding: .75rem 1rem;
           margin: 0.5rem 1rem;
@@ -114,6 +169,9 @@ html, body, #root{
           font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
+          color: var(--color);
+          background-color: var(--background-elmnt);
+          border: var(--border);
         }  
         .btn2{
           padding: .75rem 1.6rem;
@@ -122,6 +180,9 @@ html, body, #root{
           font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
+          color: var(--color);
+          background-color: var(--background-elmnt);
+          border: var(--border);
         }  
       }  
     }  
@@ -150,6 +211,7 @@ html, body, #root{
     p{
       font-size: 1.5rem;
       padding-bottom: 10px;
+      color: var(--color);
     }
     .btns{
       display: flex;
@@ -165,6 +227,9 @@ html, body, #root{
         text-decoration: none;
         cursor: pointer;
         border-radius: 0.3rem;
+        color: var(--color);
+        background-color: var(--background-color);
+        border: var(--border);
       }
       button{
         padding: .75rem 1rem;
@@ -173,6 +238,9 @@ html, body, #root{
         width: fit-content;
         font-size: 1.1rem;
         border-radius: 0.3rem;
+        color: var(--color);
+        background-color: var(--background-color);
+        border: var(--border);
       } 
     }
   }
@@ -190,18 +258,23 @@ html, body, #root{
       font-weight: bold;
       width: fit-content;
       font-size: 1.1rem;
+      color: var(--color);
+      background-color: var(--background-elmnt);
+      border: var(--border);
     } 
   }  
 }
 
 .footer{
-  position: fixed;
-  bottom: 1px;
+  position: absolute;
+  bottom: 0;
   padding: 0 1.5rem 1rem;
   font-size: 1.2em;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  color: var(--color);
+  pointer-events: none;
 }
 
 .containerSpinner{
@@ -213,13 +286,17 @@ html, body, #root{
   width: 40px;
   height: 40px;
   margin: 100px auto;
+
+  div{
+    background-color: var(--background-spinner);
+  }
   
   .sk-cube {
     width: 33%;
     height: 33%;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-            animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
   }
   .sk-cube1 {
   -webkit-animation-delay: 0.2s;
@@ -255,26 +332,26 @@ html, body, #root{
     @-webkit-keyframes sk-cubeGridScaleDelay {
       0%, 70%, 100% {
         -webkit-transform: scale3D(1, 1, 1);
-                transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1);
       } 35% {
         -webkit-transform: scale3D(0, 0, 1);
-                transform: scale3D(0, 0, 1); 
+        transform: scale3D(0, 0, 1); 
       }
     }
     
     @keyframes sk-cubeGridScaleDelay {
       0%, 70%, 100% {
         -webkit-transform: scale3D(1, 1, 1);
-                transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1);
       } 35% {
         -webkit-transform: scale3D(0, 0, 1);
-                transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1);
       } 
     }
 }
 }
 
-@media (max-width: 425px){
+@media (min-width: 320px) and (max-width: 375px){
   .welcome-container{
     height: 100%;
     h1, p{
@@ -309,66 +386,168 @@ html, body, #root{
 
   .game-flag-container{
     height: 100%;
+    width: 100%;
     .countries-container{
       flex-direction: column;
       width: 100%;
       .firstCountry, .secondCountry{
-        padding: 2rem 0;
+        padding: 0;
+        padding-bottom: 1.5rem;
         .img-container{
           img{
-            height: 186px;
-            width: 330px;
+            height: 160px;
+            width: 250px;
           }
         }
       }
     }
     .answer-container{
-      .correct-answer{
-        padding-bottom: 30px;
-      }
+
       .wrong-answer{
         width: 97%;
-        padding-bottom: 30px;
       }
     }
   .footer{
-    position: static;
-    width: 100%; 
-    display: flex; 
-    flex-wrap: wrap; 
-    align-self: flex-end;
-    padding-top: 2rem;
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 20px;
   }
   }
 }
 
-@media (min-width:425px) and (max-width: 817px){
+@media (min-width: 375px) and (max-width: 425px){
   .welcome-container{
-    height: 92.9vh;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 19px;
     h1, p{
-      width: 70%;
+      width: 80%;
       margin: 0;
     }
     h1{
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-top: 30px;
       text-align: center;
     }
     p{
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 30px 0;
+      padding-bottom: 1rem;
+    }
+    .selectRegion{
+      padding: 0;
+      h3{
+        font-size: 1.6rem;
+      }
+      .buttons{
+        flex-wrap: wrap;
+        margin: 31px 0;
+        width: 70%;
+        justify-content: center;
+        a{
+          text-align: center;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .game-flag-container{
+    margin-top: 1rem;
+    .countries-container{
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      .firstCountry, .secondCountry{
+        padding: 0;
+        padding-bottom: 3rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .img-container{
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+          img{
+            height: 120px;
+            width: 195px;
+          }
+        }
+        .info-container{
+          width: 100%;
+          h2{
+            font-size: 2em;
+          }
+          p{
+            font-size: 1.5em;
+          }
+          .btn-container{
+            width: 95%;
+            button{
+              padding: 0.5rem .5rem;
+              font-size: .8em;
+              margin: .4rem;
+              width: 40%;
+            }
+          }
+        }
+      }
+      .secondCountry{
+        padding-bottom: 1rem;
+      }
+    }
+    .answer-container{
+      .wrong-answer{
+        width: 97%;
+        padding: 0px;
+        .wrong-answer-txt{
+          h1{
+            font-size: 1.6rem;
+          }
+          p{
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  .footer{
+    display: none;
+  }
+  }
+}
+
+@media (min-width: 425px) and (max-width: 512px){
+  .welcome-container{
+    height: 100%;
+    padding: 0;
+    padding-top: 1.5rem;
+    h1, p{
+      width: 80%;
+      margin: 0;
+    }
+    h1{
+      font-size: 1.7em;
+      margin-top: 30px;
+      text-align: center;
+    }
+    p{
+      font-size: 1.4em;
       text-align: center;
       margin: 30px 0;
     }
     .selectRegion{
+    margin: 1.7rem 0;
       .buttons{
-        margin: 29px 0;
+        margin: 2rem 0;
         width: 70%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         a{
           text-align: center;
-          font-size: 1.2rem;
+          font-size: 1.2em;
         }
       }
     }
@@ -380,13 +559,17 @@ html, body, #root{
       width: 100%;
       flex-direction: column;
       .firstCountry, .secondCountry{
-        padding: 2rem 0;
+        padding: 1rem 0;
         .img-container{
           img{
-            height: 186px;
-            width: 330px;
+            height: 130px;
+            width: 200px;
           }
         }
+      }
+      .secondCountry{
+        padding: 0;
+        padding-bottom: 1rem;
       }
     }
     .answer-container{
@@ -396,15 +579,90 @@ html, body, #root{
       .wrong-answer{
         width: 97%;
         padding-bottom: 30px;
+        h1{
+          font-size: 1.5em;
+        }
       }
     }
-  .footer{
-    position: inherit;
-    width: 100%; 
-    display: flex; 
-    align-self: flex-end;
-    padding-top: 2rem;
   }
+}
+
+@media (min-width:511px) and (max-width: 817px){
+  .welcome-container{
+    height: 100%;
+    padding: 0;
+    padding-top: 1.1rem;
+    h1, p{
+      width: 80%;
+      margin: 0;
+    }
+    h1{
+      font-size: 1.7em;
+      margin-top: 30px;
+      text-align: center;
+    }
+    p{
+      font-size: 1.4em;
+      text-align: center;
+      margin: 30px 0;
+    }
+    .selectRegion{
+    margin: 1rem 0;
+      .buttons{
+        margin: 2rem 0;
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        a{
+          text-align: center;
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+
+  .game-flag-container{
+    height: 100%;
+    .countries-container{
+      width: 100%;
+      flex-direction: column;
+      .firstCountry, .secondCountry{
+        padding: 0;
+        .img-container{
+          img{
+            height: 136px;
+            width: 270px;
+          }
+        }
+        .info-container{
+          h2{
+            font-size: 1.5em;
+          }
+        }
+      }
+      .secondCountry{
+        padding: 0;
+        padding-bottom: 1rem;
+      }
+      .firstCountry{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+    
+    .answer-container{
+      .correct-answer{
+        padding-bottom: 50px;
+      }
+      .wrong-answer{
+        width: 100%;
+        padding-bottom: 30px;
+      }
+    }
+    .footer{
+      position: relative;
+    }
   }
 }
 
@@ -430,7 +688,6 @@ html, body, #root{
 
 @media (min-width:818px) and (max-width: 831px){
   .welcome-container{
-    height: 92.9vh;
     .selectRegion{
       .buttons{
         a{
@@ -446,7 +703,6 @@ html, body, #root{
     height: 100%;
     .countries-container{
       width: 100%;
-      flex-direction: column;
       .firstCountry, .secondCountry{
         padding: 2.28rem 0;
         .img-container{
@@ -466,13 +722,7 @@ html, body, #root{
         padding-bottom: 30px;
       }
     }
-    .footer{
-      position: inherit;
-      width: 100%; 
-      display: flex; 
-      align-self: flex-end;
-      padding-top: 9px;
-    }
+
   }
 }
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { context } from "./context/FunctionContext"
 
 
-function Start({ isDark }) {
+function Start() {
 
     const { callAPI } = useContext(context)
 
@@ -17,12 +17,12 @@ function Start({ isDark }) {
                 <section className="selectRegion">
                     <h3>Elija su región</h3>
                     <div className="buttons">
-                        <Link to={`/game/all`} onClick={() => { callAPI('all', '') }} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>Todo el mundo</Link>
-                        <Link to={`/game/americas`} onClick={() => { callAPI('region', 'americas') }} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>América</Link>
-                        <Link to={`/game/europe`} onClick={() => { callAPI('region', 'europe') }} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>Europa</Link>
-                        <Link to={`/game/africa`} onClick={() => { callAPI('region', 'africa') }} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>Africa</Link>
-                        <Link to={`/game/asia`} onClick={() => { callAPI('region', 'asia') }} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>Asia</Link>
-                        <Link to={`/game/oceania`} onClick={() => { callAPI('region', 'oceania') }} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>Oceania</Link>
+                        <Link to={`/game/all`} onClick={() => { callAPI('all', '') }} >Todo el mundo</Link>
+                        <Link to={`/game/americas`} onClick={() => { callAPI('region', 'americas') }} >América</Link>
+                        <Link to={`/game/europe`} onClick={() => { callAPI('region', 'europe') }} >Europa</Link>
+                        <Link to={`/game/africa`} onClick={() => { callAPI('region', 'africa') }} >Africa</Link>
+                        <Link to={`/game/asia`} onClick={() => { callAPI('region', 'asia') }} >Asia</Link>
+                        <Link to={`/game/oceania`} onClick={() => { callAPI('region', 'oceania') }} >Oceania</Link>
                     </div>
                 </section>
             </section>

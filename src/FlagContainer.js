@@ -2,9 +2,10 @@ import React, { useContext } from 'react'
 import { useState, useEffect } from 'react'
 import { context } from "./context/FunctionContext"
 import Spinner from './Spinner';
+import Footer from './Footer';
 import { Link } from 'react-router-dom'
 
-function FlagContainer({ isDark }) {
+function FlagContainer() {
 
     const [randomCountry, setRandomCountry] = useState([])
     const [twoCountry, setTwoCountry] = useState([])
@@ -77,7 +78,7 @@ function FlagContainer({ isDark }) {
     }
 
     return (
-        twoCountry.length === 0 ? <Spinner isDark={isDark} /> : <>
+        twoCountry.length === 0 ? <Spinner /> : <>
             <div className="game-flag-container">
                 <section className="countries-container">
                     <div className="firstCountry">
@@ -89,7 +90,7 @@ function FlagContainer({ isDark }) {
                             <p>Poblacion: {formatNumber(twoCountry[0]?.population)}</p>
                         </div>
                     </div>
-                    <div className="secondCountry">
+                    <div className="secondCountry" >
                         <div className="img-container">
                             <img src={twoCountry[1]?.flags.png} alt={twoCountry[1]?.translations.es} />
                         </div>
@@ -97,21 +98,34 @@ function FlagContainer({ isDark }) {
                             <h2>{twoCountry[1]?.translations.es}</h2>
                             {isCorrect ? <p>Poblacion: {formatNumber(twoCountry[1]?.population)}</p> : <div className="btn-container">
                                 <span>tiene</span>
-                                <button className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border btn2" : "light-mode-text light-mode-elmnt light-mode-border btn2"} onClick={() => { isHigher(twoCountry[1]?.population) }} disabled={isCorrect || isWrong} >Más población</button>
-                                <button className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border btn1" : "light-mode-text light-mode-elmnt light-mode-border btn1"} onClick={() => { isLower(twoCountry[1]?.population) }} disabled={isCorrect || isWrong}>Menos población</button>
+                                <button className="btn2" onClick={() => { isHigher(twoCountry[1]?.population) }} disabled={isCorrect || isWrong} >Más población</button>
+                                <button className="btn1" onClick={() => { isLower(twoCountry[1]?.population) }} disabled={isCorrect || isWrong}>Menos población</button>
                                 <span>que {twoCountry[0]?.translations.es}</span>
                             </div>}
                         </div>
                     </div>
                 </section>
-                <section className='answer-container'>
-                    {isCorrect ? <div className='correct-answer'> <p>¡CORRECTO!</p> <button onClick={() => deleteFirstElement()} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>Siguiente</button></div> : ''}
-                    {isWrong ? <div className='wrong-answer'><div className="wrong-answer-txt"><h1>¡BUEN INTENTO!</h1><p>{twoCountry[1]?.translations.es} tiene {formatNumber(twoCountry[1]?.population)} habitantes.<br /> Tu puntuación fue de: {counter}</p></div><div className="btns"><button onClick={() => newGame()} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-elmnt light-mode-text light-mode-border"}>Reintentar</button><Link to={`/`} className={isDark ? "dark-mode-text dark-mode-elmnt dark-mode-border" : "light-mode-text light-mode-elmnt light-mode-border"}>Cambiar de región</Link></div></div> : ""}
-                </section>
-                <section className="footer">
-                    <p>Puntuación: {counter}</p>
-                    <p>Puntuación máxima: {JSON.parse(localStorage?.getItem('maxCounter'))}</p>
-                </section>
+                <div className='answer-container'>
+                    {isCorrect ? <div className='correct-answer'>
+                        <p>¡CORRECTO!</p>
+                        <button onClick={() => deleteFirstElement()} >Siguiente</button></div> : ''}
+                    {isWrong ?
+                        <div className='wrong-answer'>
+                            <div className="wrong-answer-txt">
+                                <h1>¡BUEN INTENTO!</h1>
+                                <p>{twoCountry[1]?.translations.es} tiene {formatNumber(twoCountry[1]?.population)} habitantes.
+                                    <br />
+                                    Tu puntuación fue de: {counter}
+                                </p>
+                            </div>
+                            <div className="btns">
+                                <button onClick={() => newGame()} >Reintentar</button>
+                                <Link to={`/`}>Cambiar de región</Link>
+                            </div>
+                        </div>
+                        : ""}
+                </div>
+                <Footer counter={counter} />
             </div>
         </>
     )
